@@ -1,0 +1,30 @@
+$mainColor: #154058;
+$titleText: "Noto Serif TC", serif;
+$contentText: "Noto Sans TC", sans-serif;
+
+@mixin pc1400 {
+  @media (max-width: 1400px) {
+    @content;
+  }
+}
+@mixin pc1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin mb992 {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+@mixin mb768 {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin mb576 {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
