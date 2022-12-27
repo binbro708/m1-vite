@@ -116,7 +116,12 @@ export default {
         this.tempProduct = {};
         // 如果不是點新增產品，那就剩下點編輯，那這個tempProduct就會是原本有的資料
       } else {
-        this.tempProduct = { ...item };
+        const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/article/${item.id}`;
+        this.isLoading = true;
+        this.$http.get(api).then((res) => {
+          this.isLoading = false;
+          this.tempProduct = { ...res.data.article };
+        });
       }
       // 原本isNew的false會被改成true
       this.isNew = isNew;
