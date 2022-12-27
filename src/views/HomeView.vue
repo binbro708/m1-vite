@@ -131,10 +131,7 @@
             >
               <a @click.prevent="getNew(item.id)">
                 <div style="overflow: hidden">
-                  <img
-                    :src="item.imageUrl || '../src/assets/img/Vector.png'"
-                    alt="logo"
-                  />
+                  <img :src="item.imageUrl || '/Vector.png'" alt="logo" />
                 </div>
                 <h4>{{ item.title }}</h4>
                 <p>{{ item.create_at }}</p>

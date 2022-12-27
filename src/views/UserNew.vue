@@ -4,10 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <img
-          :src="article.imageUrl || '../src/assets/img/Vector.png'"
-          alt="logo"
-        />
+        <img :src="article.imageUrl || '/Vector.png'" alt="logo" />
       </div>
       <div class="col-6">
         <h3>{{ article.title }}</h3>
