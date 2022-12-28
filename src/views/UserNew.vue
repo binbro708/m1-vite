@@ -1,20 +1,22 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <AppHeader></AppHeader>
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <img :src="article.imageUrl || '/Vector.png'" alt="logo" />
-      </div>
-      <div class="col-6">
-        <h3>{{ article.title }}</h3>
-        <p class="h5">{{ article.create_at }}</p>
-        <p class="h5">作者:{{ article.author }}</p>
-        <p class="h5 mt-5">{{ article.content }}</p>
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <img :src="article.imageUrl || '/Vector.png'" alt="logo" />
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3>{{ article.title }}</h3>
+          <p class="h5">{{ article.create_at }}</p>
+          <p class="h5">作者:{{ article.author }}</p>
+          <p class="h5 mt-5">{{ article.content }}</p>
+        </div>
       </div>
     </div>
+    <AppFooter></AppFooter>
   </div>
-  <AppFooter></AppFooter>
 </template>
 
 <script>
@@ -66,5 +68,16 @@ img {
   width: 343px;
   height: 286px;
   object-fit: contain;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 設置page-wrapper的最小高度為螢幕高度 */
+}
+
+/* 將container設置為flex: 1, 讓它占滿剩餘的高度 */
+.container {
+  flex: 1;
 }
 </style>
