@@ -1,6 +1,6 @@
 <template>
   <AppHeader></AppHeader>
-  <div class="container">
+  <div class="container mb-5">
     <h2 class="mb-3">飲料菜單</h2>
     <img
       class="img-fluid"

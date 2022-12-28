@@ -13,13 +13,13 @@
         </p>
       </div>
       <div class="footer-icon d-flex align-items-center">
-        <a href="">
+        <a href="tel:+886965656865">
           <i class="fa-solid fa-phone"></i>
         </a>
-        <a href="">
+        <a href="https://www.facebook.com/MuYiChun/">
           <i class="fa-brands fa-facebook"></i>
         </a>
-        <a href="">
+        <a href="https://www.instagram.com/muyichuntea/">
           <i class="fa-brands fa-instagram"></i>
         </a>
       </div>
