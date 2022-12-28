@@ -30,8 +30,9 @@
           <div class="h5" v-if="product.price">
             優惠價 {{ product.price }} 元
           </div>
-          <div class="h5">
-            <input type="number" min="1" max="10" v-model="qty" /> 個
+          <div class="h5 mt-3">
+            數量:<input type="number" min="1" max="10" v-model="qty" />
+            {{ product.unit }}
           </div>
           <hr />
           <button
