@@ -5,11 +5,12 @@
     <div class="container wrap">
       <div class="row mt-4 d-flex justify-content-center">
         <!-- 購物車列表 -->
-        <div class="col-md-5">
+        <div class="col-12">
           <div class="sticky-top">
             <table class="table align-middle">
               <thead>
                 <tr>
+                  <th></th>
                   <th></th>
                   <th>品名</th>
                   <th style="width: 110px">數量</th>
@@ -29,6 +30,12 @@
                       >
                         刪除
                       </button>
+                    </td>
+                    <td>
+                      <img
+                        :src="item.product.imageUrl"
+                        :alt="item.product.title"
+                      />
                     </td>
                     <td>
                       {{ item.product.title }}
@@ -65,11 +72,11 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="3" class="text-end">總計</td>
+                  <td colspan="4" class="text-end">總計</td>
                   <td class="text-end">{{ $filters.currency(cart.total) }}</td>
                 </tr>
                 <tr v-if="cart.final_total !== cart.total">
-                  <td colspan="3" class="text-end text-success">折扣價</td>
+                  <td colspan="4" class="text-end text-success">折扣價</td>
                   <td class="text-end text-success">
                     {{ $filters.currency(cart.final_total) }}
                   </td>
@@ -186,7 +193,7 @@
         </Form>
       </div>
     </div>
-    <AppFooter></AppFooter>
+    <AppFooter class="mt-5"></AppFooter>
   </div>
 </template>
 

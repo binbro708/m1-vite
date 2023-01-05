@@ -38,7 +38,7 @@
                 <div class="d-flex justify-contents-between">
                   <button
                     type="button"
-                    class="btn btn-primary me-auto btn-group-sm btn-group d-flex align-items-center"
+                    class="btn btn-primary me-auto btn-group-sm btn-group d-flex align-items-center buy-btn"
                     @click.prevent="addCart(item.id)"
                     :disabled="this.status.loadingItem === item.id"
                   >
@@ -52,7 +52,7 @@
                     加入購物車
                   </button>
                   <a
-                    class="btn btn-primary"
+                    class="btn btn-primary more-btn"
                     @click.prevent="getProduct(item.id)"
                     >查看更多</a
                   >
@@ -178,6 +178,13 @@ export default {
     a {
       font-family: $contentText;
     }
+  }
+}
+.buy-btn,
+.more-btn {
+  background-color: rgb(21, 63, 86);
+  &:hover {
+    background-color: rgb(21, 63, 86, 0.7);
   }
 }
 </style>

@@ -37,7 +37,7 @@
           <hr />
           <button
             type="button"
-            class="btn btn-outline-danger align-self-auto mt-auto"
+            class="btn align-self-auto mt-auto add-cart-btn"
             @click="addToCart(product.id)"
           >
             加到購物車
@@ -115,5 +115,12 @@ export default {
 .container-xxl {
   margin-top: 150px;
   margin-bottom: 150px;
+}
+.add-cart-btn {
+  background-color: rgb(21, 64, 88);
+  color: white;
+  &:hover {
+    background-color: rgb(21, 64, 88, 0.7);
+  }
 }
 </style>

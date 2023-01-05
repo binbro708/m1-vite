@@ -83,7 +83,7 @@
                   <div class="d-flex justify-contents-between">
                     <button
                       type="button"
-                      class="btn btn-primary me-auto btn-group-sm btn-group d-flex align-items-center"
+                      class="btn btn-primary me-auto btn-group-sm btn-group d-flex align-items-center buy-btn"
                       @click.prevent="addCart(item.id)"
                       :disabled="this.status.loadingItem === item.id"
                     >
@@ -97,7 +97,7 @@
                       加入購物車
                     </button>
                     <a
-                      class="btn btn-primary"
+                      class="btn btn-primary more-btn"
                       @click.prevent="getProduct(item.id)"
                       >查看更多</a
                     >
@@ -117,10 +117,14 @@
     <div class="container-xxl news-group">
       <div class="row d-flex flex-column justify-content-center">
         <div class="col-12 news-text d-flex flex-column">
-          <p class="new-title">最新消息</p>
-          <router-link to="/news/newlist">
-            <p class="more-btn">查看更多 -></p>
-          </router-link>
+          <div class="d-flex justify-content-between align-items-end">
+            <p class="new-title mb-0">最新消息</p>
+            <router-link to="/news/newlist">
+              <p class="more-news-btn mb-0">查看更多 ...</p>
+            </router-link>
+          </div>
+
+          <hr />
         </div>
         <div class="col-12 new-group gx-5">
           <div class="row">
@@ -379,7 +383,7 @@ main {
 }
 
 .jam-sale {
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   .card {
     margin-bottom: 30px;
     img {
@@ -403,7 +407,13 @@ main {
     }
   }
 }
-
+.buy-btn,
+.more-btn {
+  background-color: rgb(21, 63, 86);
+  &:hover {
+    background-color: rgb(21, 63, 86, 0.7);
+  }
+}
 .news-group {
   margin-bottom: 200px;
   .new-group {
@@ -466,19 +476,19 @@ main {
     }
   }
   .news-text {
-    background-color: $mainColor;
     .new-title {
       padding-top: 50px;
       @include mb768 {
         padding-top: 0;
       }
       font-size: 50px;
-      color: white;
+      color: $mainColor;
+
       font-family: $titleText;
     }
-    .more-btn {
+    .more-news-btn {
       font-size: 32px;
-      color: white;
+      color: $mainColor;
       font-family: $titleText;
     }
   }

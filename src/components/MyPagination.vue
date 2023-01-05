@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Page navigation example  ">
+  <nav aria-label="Page navigation example ">
     <ul class="pagination">
       <li class="page-item">
         <a
@@ -67,8 +67,18 @@ export default {
 nav {
   display: flex;
   justify-content: center;
+  background-color: white !important;
   ul {
     margin: 0;
+  }
+  .page-link {
+    color: #154058;
+  }
+  .active > .page-link,
+  .page-link.active {
+    color: white;
+    background-color: #154058;
+    border-color: #154058;
   }
 }
 </style>

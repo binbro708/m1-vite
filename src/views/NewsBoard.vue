@@ -87,8 +87,6 @@ export default {
   },
   inject: ["emitter"],
   methods: {
-    // TODO loading效果
-    // 取得產品列表，預設第一頁
     getNews(page = 1) {
       const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/articles?page=${page}`;
       this.isLoading = true;
@@ -144,6 +142,9 @@ export default {
         item.isPublic = false;
       }
       item.create_at = new Date().getTime();
+      // item.create_at = new Date("2023/1/5 12:25:08").getTime();
+      item.content = item.content.replace(/\s{2,}/g, " ");
+      item.content = item.content.replace(/\n/g, "<br>");
       this.tempProduct = item;
       // 新增產品資料列表，this.isNew = isNew; 就是點新增產品isNew的狀態
       let api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/article`;

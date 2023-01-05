@@ -11,7 +11,7 @@
           <h3>{{ article.title }}</h3>
           <p class="h5">{{ article.create_at }}</p>
           <p class="h5">作者:{{ article.author }}</p>
-          <p class="h5 mt-5">{{ article.content }}</p>
+          <p class="h5 mt-5 pre-line" v-html="article.content"></p>
         </div>
       </div>
     </div>
@@ -79,5 +79,9 @@ img {
 /* 將container設置為flex: 1, 讓它占滿剩餘的高度 */
 .container {
   flex: 1;
+}
+
+.pre-line {
+  white-space: pre-line;
 }
 </style>

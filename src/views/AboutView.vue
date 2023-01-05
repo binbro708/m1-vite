@@ -10,8 +10,12 @@
   <div class="container-xxl">
     <div class="row">
       <div class="col-12 mb-5">
-        <div class="row d-flex align-items-center flex-column flex-lg-row">
-          <div class="col-12 col-sm-6">
+        <div
+          class="row d-flex align-items-center flex-column flex-lg-row justify-content-between"
+        >
+          <div
+            class="col-12 col-sm-6 d-flex flex-column-reverse flex-lg-column align-items-center"
+          >
             <h3 class="mb-3">品牌緣起</h3>
             <h4 class="mb-3">『喜歡，最純粹的那種。』</h4>
             <p class="mb-3">
@@ -24,7 +28,7 @@
 
             <p class="mb-3">這是牧一春，以純粹的喜歡，使您喜歡純粹。</p>
           </div>
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-6 d-flex flex-row-reverse">
             <img
               src="@/assets/img/about-1.png"
               alt="about-1"
@@ -34,10 +38,15 @@
         </div>
       </div>
       <div class="col-12">
-        <div
-          class="row d-flex align-items-center flex-column flex-lg-row-reverse"
-        >
+        <div class="row d-flex align-items-center flex-column flex-lg-row">
           <div class="col-12 col-sm-6">
+            <img
+              src="@/assets/img/about-1.png"
+              alt="about-1"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-12 col-sm-6 d-flex flex-column align-items-center">
             <h3 class="mb-3">品牌理念</h3>
             <p class="mb-3">
               泡茶必須養壺，茶方能溫潤順口，越陳越香。
@@ -52,13 +61,6 @@
               <br />
               誠摯邀請您，與我們一同成長，不只喝茶，我們一起養茶。
             </p>
-          </div>
-          <div class="col-12 col-sm-6">
-            <img
-              src="@/assets/img/about-1.png"
-              alt="about-1"
-              class="img-fluid"
-            />
           </div>
         </div>
       </div>
