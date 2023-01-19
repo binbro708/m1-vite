@@ -24,7 +24,7 @@
         }}</a>
       </li>
       <li>
-        <a href="">{{ page }}</a>
+        <a href="#">{{ page }}</a>
       </li>
       <li class="page-item">
         <a

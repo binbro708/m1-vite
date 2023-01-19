@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <app-header></app-header>
+  <app-header />
   <!-- banner區域 -->
   <div class="banner mb-5">
     <div class="container-fluid p-0">
@@ -39,9 +39,9 @@
 <script>
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
-import MyPagination from "../components/MyPagination.vue";
+import MyPagination from "@/components/MyPagination.vue";
 export default {
-  name: "NewsView",
+  name: "NewsList",
   data() {
     return {
       newsPagination: {},
@@ -51,7 +51,9 @@ export default {
   components: { AppHeader, AppFooter, MyPagination },
   methods: {
     getNews(page = 1) {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/articles`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/articles`;
       this.isLoading = true;
       this.$http.get(url).then((res) => {
         this.isLoading = false;

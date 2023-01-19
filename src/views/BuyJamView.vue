@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <AppHeader></AppHeader>
+  <AppHeader />
   <div class="container-xxl jam-sale">
     <h2>美味的果醬們</h2>
 
@@ -16,10 +16,10 @@
               <img
                 :src="
                   item.imageUrl ||
-                  'https://storage.googleapis.com/vue-course-api.appspot.com/bin_test/1671894814585.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=cXIvKpH2H7jlHaQ3mzxElVzQBdFcPhZOFmSsoT9dNytb5hvqJGLkTaKhuqOPbHKZZTDr8TTZr6dclzcQPH08kZwXA51dN5CKjj41AfDm9m4Ck6zmijjjZ0wl71i36Dc89Or%2FTpkLfCQyXpUlH%2FluUEI29BEacqDc846kHoLnmlegV7OVe6aseAaUgEuW5MccHU8vkPkCvBRuSJGNaWLwdXPkVyAx8jNJ5z9ZW3IcNsxs2pKHy4qjbPqBaNlGL1KMtriW2xFuLycDTjqxAnJqgakNZCHIMCLT6zlykJsj4TsbDK10u0hUR1eeUUjHqx96cvUTVFYj2DABUPO1EIcBvg%3D%3D'
+                  'https://storage.googleapis.com/vue-course-api.appspot.com/${import.meta.env.VITE_API_PATH}/1671894814585.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=cXIvKpH2H7jlHaQ3mzxElVzQBdFcPhZOFmSsoT9dNytb5hvqJGLkTaKhuqOPbHKZZTDr8TTZr6dclzcQPH08kZwXA51dN5CKjj41AfDm9m4Ck6zmijjjZ0wl71i36Dc89Or%2FTpkLfCQyXpUlH%2FluUEI29BEacqDc846kHoLnmlegV7OVe6aseAaUgEuW5MccHU8vkPkCvBRuSJGNaWLwdXPkVyAx8jNJ5z9ZW3IcNsxs2pKHy4qjbPqBaNlGL1KMtriW2xFuLycDTjqxAnJqgakNZCHIMCLT6zlykJsj4TsbDK10u0hUR1eeUUjHqx96cvUTVFYj2DABUPO1EIcBvg%3D%3D'
                 "
                 class="card-img-top"
-                alt="..."
+                alt="產品圖片"
               />
             </div>
             <div class="col-8 col-sm-12">
@@ -39,7 +39,7 @@
                   <button
                     type="button"
                     class="btn btn-primary me-auto btn-group-sm btn-group d-flex align-items-center buy-btn"
-                    @click.prevent="addCart(item.id)"
+                    @click="addCart(item.id)"
                     :disabled="this.status.loadingItem === item.id"
                   >
                     <div
@@ -68,18 +68,18 @@
       ></ProductsPagination>
     </div>
   </div>
-  <CartIcon></CartIcon>
-  <AppFooter></AppFooter>
+  <CartIcon />
+  <AppFooter />
 </template>
 
 <script>
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import CartIcon from "@/components/CartIcon.vue";
-import ProductsPagination from "../components/ProductsPagination.vue";
+import ProductsPagination from "@/components/ProductsPagination.vue";
 
 export default {
-  name: "HomeView",
+  name: "BuyJamView",
   components: {
     // ToastMessages,
     AppHeader,
@@ -100,7 +100,9 @@ export default {
   },
   methods: {
     getProducts(page = 1) {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/products/all`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/products/all`;
       this.isLoading = true;
       this.$http.get(url).then((res) => {
         this.isLoading = false;
@@ -136,7 +138,9 @@ export default {
       this.$router.push(`/buy/product/${id}`);
     },
     addCart(id) {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/cart`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/cart`;
       //   去比對是點到哪個產品
       this.status.loadingItem = id;
       const cart = { product_id: id, qty: 1 };

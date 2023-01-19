@@ -2,7 +2,11 @@
   <div>
     <Loading :active="isLoading"></Loading>
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="openCouponModal(true)">
+      <button
+        type="button"
+        class="btn btn-primary"
+        @click="openCouponModal(true)"
+      >
         建立新的優惠券
       </button>
     </div>
@@ -28,12 +32,14 @@
           <td>
             <div class="btn-group">
               <button
+                type="button"
                 class="btn btn-outline-primary btn-sm"
                 @click="openCouponModal(false, item)"
               >
                 編輯
               </button>
               <button
+                type="button"
                 class="btn btn-outline-danger btn-sm"
                 @click="openDelCouponModal(item)"
               >
@@ -100,7 +106,9 @@ export default {
     // 取得優惠卷
     getCoupons() {
       this.isLoading = true;
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/admin/coupons`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/coupons`;
       this.$http.get(url, this.tempProduct).then((res) => {
         this.coupons = res.data.coupons;
         this.isLoading = false;
@@ -109,14 +117,18 @@ export default {
     // 優惠卷重新渲染
     updateCoupon(tempCoupon) {
       if (this.isNew) {
-        const url = `https://vue3-course-api.hexschool.io/api/bin_test/admin/coupon`;
+        const url = `https://${import.meta.env.VITE_API_URL}/api/${
+          import.meta.env.VITE_API_PATH
+        }/admin/coupon`;
         this.$http.post(url, { data: tempCoupon }).then((res) => {
           this.$httpMessageState(res, "新增優惠券");
           this.getCoupons();
           this.$refs.couponModal.hideModal();
         });
       } else {
-        const url = `https://vue3-course-api.hexschool.io/api/bin_test/admin/coupon/${this.tempCoupon.id}`;
+        const url = `https://${import.meta.env.VITE_API_URL}/api/${
+          import.meta.env.VITE_API_PATH
+        }/admin/coupon/${this.tempCoupon.id}`;
         this.$http.put(url, { data: this.tempCoupon }).then((res) => {
           this.$httpMessageState(res, "已編輯優惠券");
           this.getCoupons();
@@ -125,7 +137,9 @@ export default {
       }
     },
     delCoupon() {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/admin/coupon/${this.tempCoupon.id}`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/coupon/${this.tempCoupon.id}`;
       this.isLoading = true;
       this.$http.delete(url).then((res) => {
         this.$httpMessageState(res, "刪除優惠券");

@@ -58,7 +58,10 @@
                   </button>
                 </div>
                 <div>
-                  <button class="btn btn-outline-primary btn-sm d-block w-100">
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-sm d-block w-100"
+                  >
                     新增圖片
                   </button>
                 </div>
@@ -191,7 +194,9 @@ export default {
       // 要把他轉成form的格式
       const formData = new FormData();
       formData.append("file-to-upload", uploadedFile);
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/admin/upload`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/upload`;
       this.$http.post(url, formData).then((res) => {
         if (res.data.success) {
           this.tempProduct.imageUrl = res.data.imageUrl;

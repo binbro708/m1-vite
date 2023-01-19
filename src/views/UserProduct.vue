@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <AppHeader></AppHeader>
+  <AppHeader />
   <div class="container-xxl">
     <div class="row justify-content-center">
       <article class="col-12 col-sm-8 mt-4">
@@ -8,7 +8,7 @@
           style="width: 300px; height: 300px; object-fit: contain"
           :src="
             product.imageUrl ||
-            'https://storage.googleapis.com/vue-course-api.appspot.com/bin_test/1671894814585.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=cXIvKpH2H7jlHaQ3mzxElVzQBdFcPhZOFmSsoT9dNytb5hvqJGLkTaKhuqOPbHKZZTDr8TTZr6dclzcQPH08kZwXA51dN5CKjj41AfDm9m4Ck6zmijjjZ0wl71i36Dc89Or%2FTpkLfCQyXpUlH%2FluUEI29BEacqDc846kHoLnmlegV7OVe6aseAaUgEuW5MccHU8vkPkCvBRuSJGNaWLwdXPkVyAx8jNJ5z9ZW3IcNsxs2pKHy4qjbPqBaNlGL1KMtriW2xFuLycDTjqxAnJqgakNZCHIMCLT6zlykJsj4TsbDK10u0hUR1eeUUjHqx96cvUTVFYj2DABUPO1EIcBvg%3D%3D'
+            'https://storage.googleapis.com/vue-course-api.appspot.com/${import.meta.env.VITE_API_PATH}/1671894814585.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=cXIvKpH2H7jlHaQ3mzxElVzQBdFcPhZOFmSsoT9dNytb5hvqJGLkTaKhuqOPbHKZZTDr8TTZr6dclzcQPH08kZwXA51dN5CKjj41AfDm9m4Ck6zmijjjZ0wl71i36Dc89Or%2FTpkLfCQyXpUlH%2FluUEI29BEacqDc846kHoLnmlegV7OVe6aseAaUgEuW5MccHU8vkPkCvBRuSJGNaWLwdXPkVyAx8jNJ5z9ZW3IcNsxs2pKHy4qjbPqBaNlGL1KMtriW2xFuLycDTjqxAnJqgakNZCHIMCLT6zlykJsj4TsbDK10u0hUR1eeUUjHqx96cvUTVFYj2DABUPO1EIcBvg%3D%3D'
           "
           alt="logo"
           class="img-fluid mb-3 w-100"
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <AppFooter></AppFooter>
+  <AppFooter />
 </template>
 
 <script>
@@ -80,7 +80,9 @@ export default {
   },
   methods: {
     getProduct() {
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/product/${this.id}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/product/${this.id}`;
       this.isLoading = true;
       this.$http.get(api).then((res) => {
         this.isLoading = false;
@@ -90,7 +92,9 @@ export default {
       });
     },
     addToCart(id) {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/cart`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/cart`;
       const qty = this.qty;
       const cart = {
         product_id: id,

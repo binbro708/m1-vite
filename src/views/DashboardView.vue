@@ -1,16 +1,16 @@
 <!-- 後台 -->
 <template>
   <!-- nav元件 -->
-  <Navbar></Navbar>
+  <Navbar />
   <div class="container-fluid mt-3 position-relative">
     <!-- 吐司元件 -->
-    <ToastMessages></ToastMessages>
+    <ToastMessages />
     <router-view />
   </div>
 </template>
 <script>
 // 載入NAV
-import Navbar from "../components/NavBar.vue";
+import Navbar from "@/components/NavBar.vue";
 // 載入跨元件傳遞資料套件
 import emitter from "@/methods/emitter";
 // 載入提示訊息
@@ -35,7 +35,7 @@ export default {
     );
     // 把token加入header
     this.$http.defaults.headers.common.Authorization = token;
-    const api = `https://vue3-course-api.hexschool.io/api/user/check`;
+    const api = `https://${import.meta.env.VITE_API_URL}/api/user/check`;
     this.$http.post(api, this.user).then((res) => {
       if (!res.data.success) {
         this.$router.push("login");

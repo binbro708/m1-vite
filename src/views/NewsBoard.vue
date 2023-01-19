@@ -33,12 +33,14 @@
           <div class="btn-group">
             <!-- 編輯狀態才有東西傳進去 -->
             <button
+              type="button"
               class="btn btn-outline-primary btn-sm"
               @click="openModal(false, item)"
             >
               編輯
             </button>
             <button
+              type="button"
               class="btn btn-outline-danger btn-sm"
               @click="delModal(item)"
             >
@@ -66,9 +68,9 @@
 </template>
 
 <script>
-import NewsModal from "../components/NewsModal.vue";
-import DelModal from "../components/DelModal.vue";
-import PaginationComponents from "../components/PaginationComponents.vue";
+import NewsModal from "@/components/NewsModal.vue";
+import DelModal from "@/components/DelModal.vue";
+import PaginationComponents from "@/components/PaginationComponents.vue";
 export default {
   data() {
     // 定義產品跟分頁
@@ -88,7 +90,9 @@ export default {
   inject: ["emitter"],
   methods: {
     getNews(page = 1) {
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/articles?page=${page}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/articles?page=${page}`;
       this.isLoading = true;
       this.$http.get(api).then((res) => {
         this.isLoading = false;
@@ -114,7 +118,9 @@ export default {
         this.tempProduct = {};
         // 如果不是點新增產品，那就剩下點編輯，那這個tempProduct就會是原本有的資料
       } else {
-        const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/article/${item.id}`;
+        const api = `https://${import.meta.env.VITE_API_URL}/api/${
+          import.meta.env.VITE_API_PATH
+        }/admin/article/${item.id}`;
         this.isLoading = true;
         this.$http.get(api).then((res) => {
           this.isLoading = false;
@@ -147,7 +153,9 @@ export default {
       item.content = item.content.replace(/\n/g, "<br>");
       this.tempProduct = item;
       // 新增產品資料列表，this.isNew = isNew; 就是點新增產品isNew的狀態
-      let api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/article`;
+      let api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/article`;
       this.isLoading = true;
 
       //api要用post的方法
@@ -155,7 +163,9 @@ export default {
       // isNew=false 就是編輯的狀態
       if (!this.isNew) {
         // api要加上個別商品的id
-        api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/article/${item.id}`;
+        api = `https://${import.meta.env.VITE_API_URL}/api/${
+          import.meta.env.VITE_API_PATH
+        }/admin/article/${item.id}`;
         // 如果是要編輯就要用put的方法
         httpMethod = "put";
       }

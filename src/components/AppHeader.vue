@@ -68,10 +68,16 @@ export default {
 nav {
   font-size: 20px;
   background-color: $mainColor;
+  div {
+    img {
+      height: 60px;
+    }
+  }
   .container-fluid {
     padding: 0;
     padding: 0 12.1%;
   }
+
   a:hover {
     color: goldenrod !important;
   }

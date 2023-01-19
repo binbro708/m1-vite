@@ -49,8 +49,8 @@ export default {
   methods: {
     logout() {
       // 登出 並且重新轉址
-      const api = `https://vue3-course-api.hexschool.io/logout`;
-      this.$http.post(api, this.user).then((res) => {
+      const api = `https://${import.meta.env.VITE_API_URL}/logout`;
+      this.$http.post(api).then((res) => {
         if (res.data.success) {
           this.$router.push("/login");
         }

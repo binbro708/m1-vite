@@ -39,14 +39,16 @@
           <div class="btn-group">
             <!-- 編輯狀態才有東西傳進去 -->
             <button
+              type="button"
               class="btn btn-outline-primary btn-sm"
               @click="openModal(false, product)"
             >
               編輯
             </button>
             <button
+              type="button"
               class="btn btn-outline-danger btn-sm"
-              @click="delModal(product)"
+              @click.prevent="delModal(product)"
             >
               刪除
             </button>
@@ -76,9 +78,9 @@
 </template>
 
 <script>
-import ProductsModal from "../components/ProductModal.vue";
-import DelModal from "../components/DelModal.vue";
-import PaginationComponents from "../components/PaginationComponents.vue";
+import ProductsModal from "@/components/ProductModal.vue";
+import DelModal from "@/components/DelModal.vue";
+import PaginationComponents from "@/components/PaginationComponents.vue";
 export default {
   data() {
     // 定義產品跟分頁
@@ -100,7 +102,9 @@ export default {
     // TODO loading效果
     // 取得產品列表，預設第一頁
     getProducts(page = 1) {
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/products?page=${page}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/products?page=${page}`;
       this.isLoading = true;
       this.$http.get(api).then((res) => {
         this.isLoading = false;
@@ -137,7 +141,9 @@ export default {
     updateProduct(item) {
       this.tempProduct = item;
       // 新增產品資料列表，this.isNew = isNew; 就是點新增產品isNew的狀態
-      let api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/product`;
+      let api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/product`;
       this.isLoading = true;
 
       //api要用post的方法
@@ -145,7 +151,9 @@ export default {
       // isNew=false 就是編輯的狀態
       if (!this.isNew) {
         // api要加上個別商品的id
-        api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/product/${item.id}`;
+        api = `https://${import.meta.env.VITE_API_URL}/api/${
+          import.meta.env.VITE_API_PATH
+        }/admin/product/${item.id}`;
         // 如果是要編輯就要用put的方法
         httpMethod = "put";
       }

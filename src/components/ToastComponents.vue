@@ -29,8 +29,7 @@
 // 把吐司元件載入進來
 import Toast from "bootstrap/js/dist/toast";
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "Toast",
+  name: "ToastComponent",
   props: ["msg"],
   mounted() {
     const toastEl = this.$refs.toast;

@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <AppHeader></AppHeader>
+  <AppHeader />
   <div class="page-wrapper">
     <div class="container wrap">
       <div class="row mt-4 d-flex justify-content-center">
@@ -101,14 +101,14 @@
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <btn type="button" class="btn btn-primary">
+              <button type="button" class="btn btn-primary">
                 <router-link class="navbar-brand" to="/buy/buyjam"
                   >繼續購買</router-link
-                ></btn
-              >
-              <btn type="button" class="btn btn-warning" @click="goPayBtn"
-                >結帳去</btn
-              >
+                >
+              </button>
+              <button type="button" class="btn btn-warning" @click="goPayBtn">
+                結帳去
+              </button>
             </div>
           </div>
         </div>
@@ -188,7 +188,9 @@
             ></textarea>
           </div>
           <div class="text-end">
-            <button class="btn btn-danger" @click="goPayOrder">送出訂單</button>
+            <button type="button" class="btn btn-danger" @click="goPayOrder">
+              送出訂單
+            </button>
           </div>
         </Form>
       </div>
@@ -231,7 +233,9 @@ export default {
   methods: {
     getProducts() {
       // 取得商品列表
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/products/all`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/products/all`;
       //loading改變
       this.isLoading = true;
       this.$http.get(url).then((res) => {
@@ -241,7 +245,9 @@ export default {
     },
 
     getCart() {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/cart`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/cart`;
       this.isLoading = true;
       this.$http.get(url).then((res) => {
         // 包含陣列列表
@@ -250,7 +256,9 @@ export default {
       });
     },
     updateCart(item) {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/cart/${item.id}`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/cart/${item.id}`;
       this.isLoading = true;
       this.status.loadingItem = item.id;
       const cart = { product_id: item.product_id, qty: item.qty };
@@ -260,14 +268,18 @@ export default {
       });
     },
     addCouponCode() {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/coupon`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/coupon`;
       const coupon = { code: this.coupon_code };
       this.$http.post(url, { data: coupon }).then(() => {
         this.getCart();
       });
     },
     createOrder() {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/order`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/order`;
       const order = this.form;
       this.$http.post(url, { data: order }).then((res) => {
         if (res.data.success) {
@@ -276,7 +288,9 @@ export default {
       });
     },
     removeCartItem(id) {
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/cart/${id}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/cart/${id}`;
 
       this.$http.delete(api).then(() => {
         this.getCart();

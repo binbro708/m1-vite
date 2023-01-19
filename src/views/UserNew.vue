@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <AppHeader></AppHeader>
+  <AppHeader />
   <div class="page-wrapper">
     <div class="container">
       <div class="row">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <AppFooter></AppFooter>
+    <AppFooter />
   </div>
 </template>
 
@@ -37,7 +37,9 @@ export default {
   },
   methods: {
     getNew() {
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/article/${this.id}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/article/${this.id}`;
       this.isLoading = true;
       this.$http.get(api).then((res) => {
         this.isLoading = false;

@@ -1,15 +1,15 @@
 <template>
-  <AppHeader></AppHeader>
+  <AppHeader />
   <div class="container mb-5">
     <h2 class="mb-3">飲料菜單</h2>
     <img
       class="img-fluid"
       src="@/assets/img/315628593_515606690581881_5939819905610265048_n.jpg"
-      alt="menu"
+      alt="菜單"
     />
   </div>
 
-  <AppFooter></AppFooter>
+  <AppFooter />
 </template>
 
 <script>

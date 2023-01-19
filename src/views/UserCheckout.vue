@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <AppHeader></AppHeader>
+  <AppHeader />
   <div class="page-wrapper">
     <div class="container">
       <div class="my-5 row justify-content-center">
@@ -54,12 +54,12 @@
             </tbody>
           </table>
           <div class="text-end" v-if="order.is_paid === false">
-            <button class="btn btn-danger">確認付款去</button>
+            <button type="button" class="btn btn-danger">確認付款去</button>
           </div>
         </form>
       </div>
     </div>
-    <AppFooter></AppFooter>
+    <AppFooter />
   </div>
 </template>
 
@@ -82,7 +82,9 @@ export default {
   },
   methods: {
     getOrder() {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/order/${this.orderId}`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/order/${this.orderId}`;
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           this.order = res.data.order;
@@ -90,7 +92,9 @@ export default {
       });
     },
     payOrder() {
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/pay/${this.orderId}`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/pay/${this.orderId}`;
       this.$http.post(url).then((res) => {
         if (res.data.success) {
           this.getOrder();

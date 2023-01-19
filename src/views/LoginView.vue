@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     signIn() {
-      const api = `https://vue3-course-api.hexschool.io/admin/signin`;
+      const api = `https://${import.meta.env.VITE_API_URL}/admin/signin`;
       this.$http.post(api, this.user).then((res) => {
         // 如果登入的狀態是成功，就去存cookie
         if (res.data.success) {

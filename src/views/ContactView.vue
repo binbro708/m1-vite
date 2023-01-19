@@ -1,5 +1,5 @@
 <template>
-  <app-header></app-header>
+  <app-header />
 
   <!-- banner區域 -->
   <div class="banner mb-5">

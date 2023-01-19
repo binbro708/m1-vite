@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import AboutView from "../views/AboutView.vue";
+import HomeView from "@/views/HomeView.vue";
+import AboutView from "@/views/AboutView.vue";
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -12,36 +11,37 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
+
     {
       path: "/buy",
       name: "buy",
-      component: () => import("../views/BuyView.vue"),
+      component: () => import("@/views/BuyView.vue"),
       children: [
         {
           path: "cart",
           name: "cart",
-          component: () => import("../views/UserCart.vue"),
+          component: () => import("@/views/UserCart.vue"),
         },
         {
           path: "product/:productId",
           name: "product/:productId",
-          component: () => import("../views/UserProduct.vue"),
+          component: () => import("@/views/UserProduct.vue"),
         },
         {
           path: "buyjam",
           name: "buyjam",
-          component: () => import("../views/BuyJamView.vue"),
+          component: () => import("@/views/BuyJamView.vue"),
         },
         {
           path: "checkout/:orderId",
-          component: () => import("../views/UserCheckout.vue"),
+          component: () => import("@/views/UserCheckout.vue"),
         },
       ],
     },
     {
       path: "/drinkmenu",
       name: "drinkmenu",
-      component: () => import("../views/DrinkMenu.vue"),
+      component: () => import("@/views/DrinkMenu.vue"),
     },
     {
       path: "/about",
@@ -51,57 +51,61 @@ const router = createRouter({
     {
       path: "/news",
       name: "news",
-      component: () => import("../views/NewsView.vue"),
+      component: () => import("@/views/NewsView.vue"),
       children: [
         {
           path: "new/:newId",
           name: "new/:newId",
-          component: () => import("../views/UserNew.vue"),
+          component: () => import("@/views/UserNew.vue"),
         },
         {
           path: "newlist",
           name: "newlist",
-          component: () => import("../views/NewsList.vue"),
+          component: () => import("@/views/NewsList.vue"),
         },
       ],
     },
     {
       path: "/contact",
       name: "contact",
-      component: () => import("../views/ContactView.vue"),
+      component: () => import("@/views/ContactView.vue"),
     },
     {
       path: "/login",
       name: "login",
-      component: () => import("../views/LoginView.vue"),
+      component: () => import("@/views/LoginView.vue"),
     },
     {
       path: "/dashboard",
       name: "dashboard",
-      component: () => import("../views/DashboardView.vue"),
+      component: () => import("@/views/DashboardView.vue"),
       children: [
         {
           path: "products",
           name: "products",
-          component: () => import("../views/ProductsView.vue"),
+          component: () => import("@/views/ProductsView.vue"),
         },
 
         {
           path: "orders",
-          component: () => import("../views/OrdersPage.vue"),
+          component: () => import("@/views/OrdersPage.vue"),
         },
         {
           path: "coupons",
-          component: () => import("../views/CouponsPage.vue"),
+          component: () => import("@/views/CouponsPage.vue"),
         },
         {
           path: "news",
-          component: () => import("../views/NewsBoard.vue"),
+          component: () => import("@/views/NewsBoard.vue"),
         },
       ],
     },
+    {
+      path: "/:catchAll(.*)",
+      redirect: "/",
+    },
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     return { x: 0, y: 0 };
   },
 });

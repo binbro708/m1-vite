@@ -43,12 +43,14 @@
           <td>
             <div class="btn-group">
               <button
+                type="button"
                 class="btn btn-outline-primary btn-sm"
                 @click="openModal(false, item)"
               >
                 檢視
               </button>
               <button
+                type="button"
                 class="btn btn-outline-danger btn-sm"
                 @click="openDelOrderModal(item)"
               >
@@ -92,7 +94,9 @@ export default {
   methods: {
     getOrders(currentPage = 1) {
       this.currentPage = currentPage;
-      const url = `https://vue3-course-api.hexschool.io/api/bin_test/admin/orders?page=${currentPage}`;
+      const url = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/orders?page=${currentPage}`;
       this.isLoading = true;
       this.$http.get(url, this.tempProduct).then((res) => {
         this.orders = res.data.orders;
@@ -100,7 +104,7 @@ export default {
         this.isLoading = false;
       });
     },
-    openModal(isNew, item) {
+    openModal(item) {
       this.tempOrder = { ...item };
       this.isNew = false;
       const orderComponent = this.$refs.orderModal;
@@ -113,7 +117,9 @@ export default {
     },
     updatePaid(item) {
       this.isLoading = true;
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/order/${item.id}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/order/${item.id}`;
       const paid = {
         is_paid: item.is_paid,
       };

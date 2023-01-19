@@ -62,7 +62,9 @@ export default {
       if (this.item.author) {
         apiChange = "article";
       }
-      const api = `https://vue3-course-api.hexschool.io/api/bin_test/admin/${apiChange}/${this.item.id}`;
+      const api = `https://${import.meta.env.VITE_API_URL}/api/${
+        import.meta.env.VITE_API_PATH
+      }/admin/${apiChange}/${this.item.id}`;
       this.isLoading = true;
 
       this.$http.delete(api).then(() => {
